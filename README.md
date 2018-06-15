@@ -8,7 +8,7 @@ Stoc
 
 String to object compiler for Javascript
 
-## Install
+## Installation
 
 ```bash
 npm install stoc
