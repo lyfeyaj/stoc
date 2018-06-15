@@ -8,6 +8,16 @@ Stoc
 
 String to object compiler for Javascript
 
+## Install
+
+```bash
+npm install stoc
+
+# or
+
+yarn install stoc
+```
+
 ## Usage
 
 ```javascript
