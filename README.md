@@ -1,4 +1,10 @@
-# Stoc
+Stoc
+====
+
+[![Build Status](https://travis-ci.org/lyfeyaj/stoc.svg?branch=master)](https://travis-ci.org/lyfeyaj/stoc)
+[![npm version](https://badge.fury.io/js/stoc.svg)](https://badge.fury.io/js/stoc)
+[![npm](https://img.shields.io/npm/dt/stoc.svg)]()
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/lyfeyaj/stoc/master/LICENSE.md)
 
 String to object compiler for Javascript
 
