@@ -28,9 +28,9 @@ stoc(`
     name
     gender
     children {
-      name
+      name: nickname
       age
-      hobbies {
+      hobbies: habits {
         name
         type
       }
@@ -39,7 +39,7 @@ stoc(`
 `)
 
 // or
-stoc('{name gender children{name age hobbies{name type}}}')
+stoc('{name gender children{name:nickname age hobbies:habits{name type}}}')
 
 // Output =>
 
@@ -47,9 +47,10 @@ stoc('{name gender children{name age hobbies{name type}}}')
   name: 1,
   gender: 1,
   children: {
-    name: 1,
+    name: 'nickname',
     age: 1,
-    hobbies: {
+    hobbies: 'habits',
+    habits: {
       name: 1,
       type: 1
     }

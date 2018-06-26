@@ -75,4 +75,20 @@ describe('stoc', function() {
       }
     });
   });
+
+  it('should be able to rename fields', function() {
+    expect(stoc('{name gender:sex age children:babies{name foods:eatables{name}}}')).to.deep.eq({
+      name: 1,
+      gender: 'sex',
+      age: 1,
+      children: 'babies',
+      babies: {
+        name: 1,
+        foods: 'eatables',
+        eatables: {
+          name: 1
+        }
+      }
+    });
+  });
 });

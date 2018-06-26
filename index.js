@@ -8,6 +8,9 @@ module.exports = function stoc(str) {
   str = str
     .replace(/(\{|\})/g, ' $1 ')
     .replace(/: +/g, ':')
+    .replace(/(:)(\w+)( +\{)/g, function(_, p1, p2, p3) {
+      return p1 + p2 + ' ' + p2 + ' ' + p3;
+    })
     .replace(/(:\w+) +/g, '$1,')
     .replace(/([^ {}:,]+)/g, '"$1"')
     .replace(/\} */g, ' },')
