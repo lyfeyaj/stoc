@@ -1,6 +1,6 @@
 {
   "name": "stoc",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "String to object compiler for javascript",
   "main": "index.js",
   "directories": {
@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/lyfeyaj/stoc#readme",
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^4.3.1",
     "humanize-number": "0.0.2",
-    "mocha": "^8.1.1"
+    "mocha": "^8.3.0"
   }
 }
