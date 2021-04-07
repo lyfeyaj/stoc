@@ -6,6 +6,7 @@ const stoc = require('../');
 
 describe('stoc', function() {
   it('should be able to parse string template to object', function() {
+    expect(stoc('   ')).to.deep.eq({});
     expect(stoc('name gender')).to.deep.eq({ name: 1, gender: 1 });
     expect(stoc('{name gender}')).to.deep.eq({ name: 1, gender: 1 });
     expect(stoc('{ name gender }')).to.deep.eq({ name: 1, gender: 1 });
@@ -77,7 +78,7 @@ describe('stoc', function() {
   });
 
   it('should be able to rename fields', function() {
-    expect(stoc('{name gender:sex age children:babies{name foods:eatables{name}}}')).to.deep.eq({
+    let result = {
       name: 1,
       gender: 'sex',
       age: 1,
@@ -89,6 +90,42 @@ describe('stoc', function() {
           name: 1
         }
       }
-    });
+    };
+    expect(stoc('{name gender:sex age children:babies{name foods:eatables{name}}}')).to.deep.eq(result);
+    expect(stoc(`{
+      name
+      gender : sex
+      age
+      children:babies {
+        name
+        foods: eatables {
+          name
+        }
+      }
+    }`)).to.deep.eq(result);
+  });
+
+  it('should throw SyntaxError when parse failed', function() {
+    expect(function() {
+      stoc('{ a b c { }');
+    }).to.throw(SyntaxError);
+    expect(function() {
+      stoc('{ a } }');
+    }).to.throw(SyntaxError);
+    expect(function() {
+      stoc('a :');
+    }).to.throw(SyntaxError);
+    expect(function() {
+      stoc('a : }');
+    }).to.throw(SyntaxError);
+    expect(function() {
+      stoc('a : b : c');
+    }).to.throw(SyntaxError);
+    expect(function() {
+      stoc('a : b: c');
+    }).to.throw(SyntaxError);
+    expect(function() {
+      stoc('a : b:c');
+    }).to.throw(SyntaxError);
   });
 });
