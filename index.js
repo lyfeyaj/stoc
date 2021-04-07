@@ -27,7 +27,7 @@ function stoc(str) {
   let obj = result;
 
   let property = '';
-  let lastUsedToken = '';
+  let lastUsedProperty = '';
   let phase = 'property';
 
   // stack to temporary store object tree
@@ -71,11 +71,11 @@ function stoc(str) {
       }
 
       // when in 'rename' phase, mark property as rename
-      if (phase === 'rename' && lastUsedToken && property) {
-        obj[lastUsedToken] = property;
+      if (phase === 'rename' && lastUsedProperty && property) {
+        obj[lastUsedProperty] = property;
 
         // remember and clear used property
-        lastUsedToken = property;
+        lastUsedProperty = property;
         property = ''
 
         // change phase to 'property'
@@ -93,15 +93,15 @@ function stoc(str) {
           } else {
             obj[property] = 1;
           }
-          lastUsedToken = property;
+          lastUsedProperty = property;
           property = '';
 
           if (disallowColon) disallowColon--;
         } else {
           // in case renamed property has children
-          if (isLeftCurlyBrace && lastUsedToken) {
-            obj = obj[lastUsedToken] = {};
-            lastUsedToken = '';
+          if (isLeftCurlyBrace && lastUsedProperty) {
+            obj = obj[lastUsedProperty] = {};
+            lastUsedProperty = '';
           }
         }
       }
